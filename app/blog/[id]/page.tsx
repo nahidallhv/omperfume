@@ -1,6 +1,12 @@
-import { Header } from '../../../components/header'
-import { Footer } from '../../../components/footer'
-import { BlogPost } from '../../../components/blog-post'
+import { Header } from '../../../components/header';
+import { Footer } from '../../../components/footer';
+import { BlogPost } from '../../../components/blog-post';
+import { getBlogPosts } from '../../../services/blog-service';
+
+export async function generateStaticParams() {
+  const posts = await getBlogPosts();
+  return posts.map(post => ({ id: post.id }));
+}
 
 export default function BlogPostPage({ params }: { params: { id: string } }) {
   return (
@@ -11,6 +17,5 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
       </main>
       <Footer />
     </div>
-  )
+  );
 }
-
