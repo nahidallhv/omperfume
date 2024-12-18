@@ -51,7 +51,7 @@ export default function EditProductPage() {
     description: '',
     price: '',
     category: '',
-    topNotes: [],        // topNotes, heartNotes ve baseNotes burada dizi olarak başlatılıyor
+    topNotes: [],        
     heartNotes: [],
     baseNotes: [],
     longevity: '',
