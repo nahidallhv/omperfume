@@ -1,21 +1,81 @@
-import { Header } from '../../components/header'
-import { Footer } from '../../components/footer'
+import { Header } from '../../components/header';
+import { Footer } from '../../components/footer';
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Header />
       <main className="flex-grow container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold mb-6">About Essence Boutique</h1>
-        <div className="prose dark:prose-invert max-w-none">
-          <p className="mb-4">Welcome to Essence Boutique, where passion for perfumery meets exquisite craftsmanship. Founded in 2010, we've dedicated ourselves to bringing the world's finest fragrances to discerning customers like you.</p>
-          <p className="mb-4">Our journey began with a simple idea: to create a haven for fragrance enthusiasts, a place where every scent tells a story and every bottle holds a world of possibilities. Today, we're proud to offer a curated collection of premium perfumes from renowned brands and niche perfumers alike.</p>
-          <p className="mb-4">At Essence Boutique, we believe that the right fragrance can elevate your mood, boost your confidence, and become an integral part of your personal style. That's why we're committed to helping you find your perfect scent, whether you're looking for a signature fragrance or exploring new olfactory territories.</p>
-          <p>Our team of fragrance experts is always on hand to guide you through our collection, offer personalized recommendations, and share their knowledge about the art and science of perfumery. We invite you to explore our boutique, indulge your senses, and discover the transformative power of fragrance.</p>
+        <h1 className="text-4xl ml-6  font-bold text-left mb-8">
+          About Liebe Perfume
+        </h1>
+        <div className="prose dark:prose-invert max-w-5xl ml-6 text-left text-lg leading-relaxed">
+          <p>
+            Welcome to <strong>Liebe Perfume</strong>, a brand born from a deep
+            passion for the art of perfumery and a heartfelt dedication to
+            celebrating individuality. The name <em>“Liebe”</em>, derived from
+            the German word for “love,” embodies our philosophy: creating
+            fragrances that resonate with love, emotion, and timeless elegance.
+          </p>
+
+          <p>
+            At Liebe Perfume, we understand that a scent is not merely a
+            fragrance—it’s an expression of identity, a silent companion through
+            life’s moments, and a bridge to cherished memories. This belief
+            inspires us to craft perfumes that transcend the ordinary, blending
+            luxury with authenticity to evoke a profound connection with every
+            wearer.
+          </p>
+
+          <p>
+            Our journey begins with the careful selection of the world’s finest
+            ingredients. From the lush fields of Provence to the vibrant spice
+            markets of the East, we source premium-quality raw materials that
+            form the heart of our creations. Each note is carefully chosen and
+            expertly balanced, resulting in compositions that are both
+            sophisticated and unforgettable.
+          </p>
+
+          <h2 className="text-2xl font-semibold mt-8">Our Philosophy</h2>
+          <p>
+            Behind every bottle of Liebe Perfume is a team of skilled artisans
+            and perfumers who bring their expertise and creativity to life.
+            Guided by a commitment to excellence, we pour our passion into every
+            detail—from the unique scent profiles to the elegant design of our
+            packaging. Every aspect of our brand is designed to create a
+            luxurious experience that delights the senses.
+          </p>
+
+          <p>
+            But Liebe Perfume is more than just a fragrance house; it is a
+            celebration of stories. We believe that each perfume tells a tale—of
+            joy, love, and individuality. Whether you are searching for a scent
+            to mark a special occasion, express your personality, or gift a
+            loved one, we strive to provide an olfactory experience that
+            resonates deeply with your emotions and aspirations.
+          </p>
+
+          <h2 className="text-2xl font-semibold mt-8">
+            Sustainability & Ethics
+          </h2>
+          <p>
+            At Liebe Perfume, sustainability and ethical practices are at the
+            core of what we do. We are committed to minimizing our environmental
+            footprint by sourcing responsibly and ensuring that our production
+            processes uphold the highest ethical standards. Because we believe
+            that true beauty lies not only in the product but also in how it’s
+            made.
+          </p>
+
+          <p>
+            Thank you for being part of our story. We invite you to explore our
+            world of fragrances and discover a scent that is uniquely yours. Let
+            Liebe Perfume be your partner in crafting unforgettable moments, one
+            exquisite fragrance at a time.
+          </p>
         </div>
       </main>
       <Footer />
     </div>
-  )
+  );
 }
-

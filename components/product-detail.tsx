@@ -1,44 +1,53 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from 'react'
-import Image from 'next/image'
-import { Heart } from 'lucide-react'
-import { Button } from './ui/button'
-import { Input } from './ui/input'
-import { useShop } from '../contexts/shop-context'
-import { Product, getProduct } from '../services/product-service'
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import { Heart } from 'lucide-react';
+import { Button } from './ui/button';
+import { Input } from './ui/input';
+import { useShop } from '../contexts/shop-context';
+import { Product, getProduct } from '../services/product-service';
+
 
 export function ProductDetail({ id }: { id: string }) {
-  const [product, setProduct] = useState<Product | null>(null)
-  const [quantity, setQuantity] = useState(1)
-  const { favorites, addToFavorites, removeFromFavorites, addToCart } = useShop()
+  const [product, setProduct] = useState<Product | null>(null);
+  const [quantity, setQuantity] = useState(1);
+  const { user, favorites, addToFavorites, removeFromFavorites, addToCart } = useShop();
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const fetchedProduct = await getProduct(id)
-      setProduct(fetchedProduct)
-    }
-    fetchProduct()
-  }, [id])
+      const fetchedProduct = await getProduct(id);
+      setProduct(fetchedProduct);
+    };
+    fetchProduct();
+  }, [id]);
 
   if (!product) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
-  const isFavorite = favorites.some(fav => fav.id === product.id)
+  const isFavorite = favorites.some((fav) => fav.id === product.id);
 
   const toggleFavorite = () => {
-    if (isFavorite) {
-      removeFromFavorites(product.id)
-    } else {
-      addToFavorites(product)
+    if (!user) {
+      alert('Please log in to add favorites!');
+      return;
     }
-  }
+    if (isFavorite) {
+      removeFromFavorites(product.id);
+    } else {
+      addToFavorites(product);
+    }
+  };
 
   const handleAddToCart = () => {
-    addToCart({ ...product, quantity })
-    alert(`Added ${quantity} of ${product.name} to cart`)
-  }
+    if (!user) {
+      alert('Please log in to add items to the cart!');
+      return;
+    }
+    addToCart({ ...product, quantity });
+    alert(`Added ${quantity} of ${product.name} to cart`);
+  };
 
   return (
     <div className="grid md:grid-cols-2 gap-8">
@@ -57,9 +66,7 @@ export function ProductDetail({ id }: { id: string }) {
           onClick={toggleFavorite}
         >
           <Heart
-            className={`h-5 w-5 ${
-              isFavorite ? 'fill-red-500 text-red-500' : 'text-gray-500'
-            }`}
+            className={`h-5 w-5 ${isFavorite ? 'fill-red-500 text-red-500' : 'text-gray-500'}`}
           />
         </Button>
       </div>
@@ -72,7 +79,7 @@ export function ProductDetail({ id }: { id: string }) {
             type="number"
             min="1"
             value={quantity}
-            onChange={(e) => setQuantity(parseInt(e.target.value))}
+            onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value)))}
             className="w-20"
           />
           <Button onClick={handleAddToCart}>Add to Cart</Button>
@@ -81,15 +88,14 @@ export function ProductDetail({ id }: { id: string }) {
           <h2 className="text-xl font-semibold mb-2">Product Details</h2>
           <ul className="list-disc list-inside text-gray-600 dark:text-gray-300">
             <li>Category: {product.category}</li>
-            <li>Top notes: Bergamot, Lemon</li>
-            <li>Heart notes: Rose, Jasmine</li>
-            <li>Base notes: Vanilla, Musk</li>
-            <li>Longevity: 6-8 hours</li>
-            <li>Sillage: Moderate</li>
+            <li>Top notes: {product.topNotes.join(', ')}</li>
+            <li>Heart notes: {product.heartNotes.join(', ')}</li>
+            <li>Base notes: {product.baseNotes.join(', ')}</li>
+            <li>Longevity: {product.longevity}</li>
+            <li>Sillage: {product.sillage}</li>
           </ul>
         </div>
       </div>
     </div>
-  )
+  );
 }
-

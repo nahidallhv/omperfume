@@ -9,6 +9,6 @@ export default nextConfig;
 module.exports = {
   images: {
     
-    domains: ['localhost','https://liebeperfume.vercel.app'], // izin verilen alan adlarını ekleyin
+    domains: ['localhost'], // izin verilen alan adlarını ekleyin
   },
 }

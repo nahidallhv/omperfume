@@ -1,5 +1,6 @@
 'use client'
 
+import { db, addDoc, collection } from '../../lib/firebase'; 
 import { useState } from 'react'
 import { Header } from '../../components/header'
 import { Footer } from '../../components/footer'
@@ -18,13 +19,31 @@ export default function ContactPage() {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData)
-    alert('Thank you for your message. We\'ll get back to you soon!')
-    setFormData({ name: '', email: '', message: '' })
+
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  // Form verilerini Firestore’a gönderme
+  try {
+    const docRef = await addDoc(collection(db, 'messages'), {
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+      timestamp: new Date(),
+    });
+    console.log('Message sent with ID: ', docRef.id);
+
+   
+    alert('Thank you for your message. We\'ll get back to you soon!');
+    
+    
+    setFormData({ name: '', email: '', message: '' });
+  } catch (e) {
+    console.error('Error adding document: ', e);
+    alert('Something went wrong. Please try again later.');
   }
+};
+
 
   return (
     <div className="min-h-screen bg-background flex flex-col">

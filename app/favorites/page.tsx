@@ -9,7 +9,7 @@ export default function FavoritesPage() {
     <div className="min-h-screen bg-background flex flex-col">
       <Header />
       <main className="flex-grow container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-6">Your Favorites</h1>
+        <h1 className="text-3xl font-bold mb-6 ml-4">Your Favorites</h1>
         <FavoritesList />
       </main>
       <Footer />

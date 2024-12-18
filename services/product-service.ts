@@ -1,3 +1,5 @@
+import { collection, addDoc, deleteDoc, doc, updateDoc } from 'firebase/firestore';
+import { db } from '../lib/firebase';
 import { getCollection, getDocument, getDocumentsWhere } from './firestore-service';
 
 export interface Product {
@@ -7,6 +9,12 @@ export interface Product {
   price: number;
   image: string;
   category: string;
+  featured: boolean;
+  topNotes: string[];
+  heartNotes: string[];
+  baseNotes: string[];
+  longevity: string;
+  sillage: string;
 }
 
 export async function getProducts(): Promise<Product[]> {
@@ -31,4 +39,20 @@ export async function getFeaturedProducts(): Promise<Product[]> {
   }
   
   return featuredProducts;
+}
+
+
+export async function addProduct(product: Omit<Product, 'id'>): Promise<string> {
+  const docRef = await addDoc(collection(db, 'products'), product);
+  return docRef.id;
+}
+
+export async function deleteProduct(id: string): Promise<void> {
+  const productRef = doc(db, 'products', id)
+  await deleteDoc(productRef)
+}
+
+export async function updateProduct(id: string, updatedProduct: Partial<Product>): Promise<void> {
+  const productRef = doc(db, 'products', id)
+  await updateDoc(productRef, updatedProduct)
 }

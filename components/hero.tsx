@@ -4,9 +4,9 @@ import { Button } from './ui/button';
 export function Hero() {
   return (
     <section className="relative w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-black overflow-hidden">
-      {/* Animasyonlu Baloncuklar */}
+   
       <div className="absolute inset-0 z-0 hero-animation">
-        {/* Statik baloncuklar */}
+        
         {[...Array(20)].map((_, i) => (
           <div key={i} className="raindrop"></div>
         ))}
@@ -14,7 +14,7 @@ export function Hero() {
 
       <div className="container relative z-10 px-4 md:px-6">
         <div className="flex flex-col items-center space-y-4 text-center">
-          {/* Hero İçeriği */}
+         
           <div>
             <div className="space-y-2">
               <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl text-white">

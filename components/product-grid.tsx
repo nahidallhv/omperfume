@@ -1,33 +1,45 @@
-'use client'
+'use client';
 
-import { useEffect, useState } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import { Heart } from 'lucide-react'
-import { Card, CardContent, CardFooter } from './ui/card'
-import { Button } from './ui/button'
-import { useShop } from '../contexts/shop-context'
-import { Product, getProductsByCategory } from '../services/product-service'
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Heart } from 'lucide-react';
+import { Card, CardContent, CardFooter } from './ui/card';
+import { Button } from './ui/button';
+import { useShop } from '../contexts/shop-context';
+import { Product, getProductsByCategory } from '../services/product-service';
 
 export function ProductGrid({ category }: { category: string }) {
-  const [products, setProducts] = useState<Product[]>([])
-  const { favorites, addToFavorites, removeFromFavorites, addToCart } = useShop()
+  const [products, setProducts] = useState<Product[]>([]);
+  const { user, favorites, addToFavorites, removeFromFavorites, addToCart } = useShop();
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const fetchedProducts = await getProductsByCategory(category)
-      setProducts(fetchedProducts)
-    }
-    fetchProducts()
-  }, [category])
+      const fetchedProducts = await getProductsByCategory(category);
+      setProducts(fetchedProducts);
+    };
+    fetchProducts();
+  }, [category]);
 
   const toggleFavorite = (product: Product) => {
-    if (favorites.some(fav => fav.id === product.id)) {
-      removeFromFavorites(product.id)
-    } else {
-      addToFavorites(product)
+    if (!user) {
+      alert('Please log in to add favorites!');
+      return;
     }
-  }
+    if (favorites.some((fav) => fav.id === product.id)) {
+      removeFromFavorites(product.id);
+    } else {
+      addToFavorites(product);
+    }
+  };
+
+  const handleAddToCart = (product: Product) => {
+    if (!user) {
+      alert('Please log in to add items to the cart!');
+      return;
+    }
+    addToCart({ ...product, quantity: 1 });
+  };
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -40,7 +52,7 @@ export function ProductGrid({ category }: { category: string }) {
                 alt={product.name}
                 width={200}
                 height={200}
-                className="rounded-lg object-cover w-full h-48"
+                className="rounded-[8px] object-cover w-full h-48"
               />
               <Button
                 variant="ghost"
@@ -50,7 +62,7 @@ export function ProductGrid({ category }: { category: string }) {
               >
                 <Heart
                   className={`h-5 w-5 ${
-                    favorites.some(fav => fav.id === product.id) ? 'fill-red-500 text-red-500' : 'text-gray-500'
+                    favorites.some((fav) => fav.id === product.id) ? 'fill-red-500 text-red-500' : 'text-gray-500'
                   }`}
                 />
               </Button>
@@ -60,13 +72,16 @@ export function ProductGrid({ category }: { category: string }) {
           </CardContent>
           <CardFooter className="flex justify-between gap-2">
             <Link href={`/product/${product.id}`} className="flex-1">
-              <Button className="w-full" variant="outline">View Details</Button>
+              <Button className="w-full" variant="outline">
+                View Details
+              </Button>
             </Link>
-            <Button className="flex-1" onClick={() => addToCart({ ...product, quantity: 1 })}>Add to Cart</Button>
+            <Button className="flex-1" onClick={() => handleAddToCart(product)}>
+              Add to Cart
+            </Button>
           </CardFooter>
         </Card>
       ))}
     </div>
-  )
+  );
 }
-

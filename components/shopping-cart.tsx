@@ -25,7 +25,7 @@ export function ShoppingCart() {
   const generateWhatsAppMessage = () => {
     let message = "Hi, I'd like to order the following items:\n\n"
     cartItems.forEach(item => {
-      message += `${item.name} - ${item.quantity} x $${item.price.toFixed(2)}\n`
+      message += `${item.name} - ${item.quantity} x $${item.price}\n`
     })
     message += `\nTotal: $${totalPrice.toFixed(2)}`
     return encodeURIComponent(message)  
@@ -59,7 +59,7 @@ export function ShoppingCart() {
                     <Image src={item.image} alt={item.name} width={50} height={50} className="rounded-md mr-4" />
                     <div>
                       <p className="font-semibold">{item.name}</p>
-                      <p className="text-sm text-gray-500">${item.price.toFixed(2)} x {item.quantity}</p>
+                      <p className="text-sm text-gray-500">${item.price} x {item.quantity}</p>
                     </div>
                   </div>
                   <div className="flex items-center">

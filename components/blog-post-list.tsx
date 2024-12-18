@@ -23,11 +23,11 @@ export function BlogPostList() {
       {blogPosts.map((post) => (
         <Card
           key={post.id}
-          className="transition-transform transform hover:scale-105 hover:shadow-lg overflow-hidden"
+          className="ml-4 transition-transform transform hover:scale-105 hover:shadow-lg overflow-hidden"
         >
           {/* Görsel */}
           {post.image && (
-            <div className="relative h-48 w-full">
+            <div className="relative h-56 w-full">
               <Image
                 src={post.image}
                 alt={post.title}

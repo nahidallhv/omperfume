@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer className="w-full py-6 bg-gray-100 dark:bg-gray-800">
       <div className="container px-4 md:px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 ml-4 gap-8">
           <div>
             <h3 className="text-lg font-semibold mb-2">Shop</h3>
             <ul className="space-y-2">

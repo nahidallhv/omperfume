@@ -64,7 +64,7 @@ export function BestSellers() {
                   </Button>
                 </div>
                 <h3 className="mt-4 text-lg font-semibold text-black">{item.name}</h3>
-                <p className="text-sm text-gray-700 dark:text-gray-700">${item.price.toFixed(2)}</p>
+                <p className="text-sm text-gray-700 dark:text-gray-700">${item.price}</p>
               </CardContent>
               <CardFooter className="flex justify-between gap-2">
                 <Link href={`/product/${item.id}`} className="flex-1">

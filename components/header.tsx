@@ -1,5 +1,6 @@
 'use client'
-import Image from 'next/image';
+
+import Image from 'next/image'
 import { useState } from 'react'
 import Link from 'next/link'
 import { ShoppingBag, Heart, Menu, User } from 'lucide-react'
@@ -10,12 +11,15 @@ import { auth } from '../lib/firebase'
 import { useShop } from '../contexts/shop-context'
 import { ShoppingCart } from './shopping-cart'
 import { ProfileDialog } from './profile-dialog'
+import { SearchResult } from './search-results'
+import { useRouter } from 'next/navigation'
 
 export function Header() {
   const { user } = useAuth()
   const { favorites } = useShop()
   const [isProfileOpen, setIsProfileOpen] = useState(false)
-  const [isMenuOpen, setIsMenuOpen] = useState(false)  
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const router = useRouter()
 
   const handleSignOut = async () => {
     try {
@@ -25,10 +29,18 @@ export function Header() {
     }
   }
 
+  
+  const handleAdminRedirect = () => {
+    router.push('/admin/products')
+  }
+
+  
+  const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL
+
   return (
     <header className="sticky top-0 z-50 w-full border-2 border-white/20 backdrop-blur-[30px] bg-white/50 shadow-custom">
       <div className="container flex h-14 items-center">
-        {/* Logo ve Menü */}
+        
         <div className="mr-4 hidden md:flex">
           <Link className="mr-6 flex items-center space-x-2" href="/">
             <Image
@@ -51,29 +63,38 @@ export function Header() {
           </nav>
         </div>
 
-        {/* Mobil Menü Butonu */}
-        <Image
-              src="/images/logo.png"
-              alt="Liebe Perfume Logo"
-              width={45}
-              height={45}
-              className=" ml-1 mr-3 rounded-full"
-              priority
-            />
+       
         <Button 
           variant="outline" 
           size="icon" 
           className="mr-2 md:hidden" 
-          onClick={() => setIsMenuOpen(!isMenuOpen)}  // Menü açma/kapama
+          onClick={() => setIsMenuOpen(!isMenuOpen)}  
         >
           <Menu className="h-5 w-5" />
           <span className="sr-only">Toggle Menu</span>
         </Button>
-        {/* Sağ Taraf */}
+
+        
+        <div className="flex-1 px-4">
+          <SearchResult />
+        </div>
+
+        
         <div className="flex mr-5 flex-1 items-center justify-between space-x-2 md:justify-end">
           <nav className="flex items-center space-x-2">
             {user ? (
               <>
+            
+                {user.email === adminEmail && (
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={handleAdminRedirect}
+                    className="text-black"
+                  >
+                    Admin
+                  </Button>
+                )}
                 <Button
                   variant="ghost"
                   size="icon"

@@ -9,7 +9,7 @@ import unisexImage from '../public/images/unisex.jpg'
 interface Category {
   name: string
   href: string
-  image: StaticImageData // Burada 'StaticImageData' türünü belirtiyoruz
+  image: StaticImageData 
 }
 
 export function Categories() {
