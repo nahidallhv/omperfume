@@ -1,17 +1,3 @@
-import { Header } from '../../components/header'
-import { Footer } from '../../components/footer'
-import { BlogPostList } from '../../components/blog-post-list'
-
-export default function BlogPage() {
-  return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <Header />
-      <main className="flex-grow container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold mb-8 ml-4">Our Blog</h1>
-        <BlogPostList />
-      </main>
-      <Footer />
-    </div>
-  )
-}
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:51e5ad999346df718e22c50f5f76540cd8983bad7620115d85e19229577beb9f
+size 511

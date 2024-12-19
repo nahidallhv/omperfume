@@ -1,24 +1,3 @@
-import { Header } from '../components/header'
-import { Hero } from '../components/hero'
-import { Categories } from '../components/categories'
-import { BestSellers } from '../components/featured-products'
-import { FeaturedProducts } from '../components/best-sellers'
-import { Newsletter } from '../components/newsletter'
-import { Footer } from '../components/footer'
-
-export default function Home() {
-  return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <Header />
-      <main className="flex-grow">
-        <Hero />
-        <Categories />
-        <BestSellers />
-        <FeaturedProducts />
-        <Newsletter />
-      </main>
-      <Footer />
-    </div>
-  )
-}
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:95b3b173087efc423a5783ac5b2f8ba6239c9c7c9143b1947444428228ff3829
+size 691

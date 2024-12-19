@@ -1,22 +1,3 @@
-import { Header } from '../../../components/header';
-import { Footer } from '../../../components/footer';
-import { BlogPost } from '../../../components/blog-post';
-import { getBlogPosts } from '../../../services/blog-service';
-
-export async function generateStaticParams() {
-  const posts = await getBlogPosts();
-  return posts.map(post => ({ id: post.id }));
-}
-
-export default function BlogPostPage({ params }: { params: { id: string } }) {
-  return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <Header />
-      <main className="flex-grow container mx-auto px-4 py-8">
-        <BlogPost id={params.id} />
-      </main>
-      <Footer />
-    </div>
-  );
-}
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:a9746ed3902a13d9369be2eed6ea64e78a5130783e10f2293cd67077707c1157
+size 812

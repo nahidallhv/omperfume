@@ -1,16 +1,3 @@
-import { Header } from '../../../components/header'
-import { Footer } from '../../../components/footer'
-import { ProductDetail } from '../../../components/product-detail'
-
-export default function ProductPage({ params }: { params: { id: string } }) {
-  return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <Header />
-      <main className="flex-grow container mx-auto px-4 py-8">
-        <ProductDetail id={params.id} />
-      </main>
-      <Footer />
-    </div>
-  )
-}
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:be8ad396753e9f41b1972bccaa7eed9378137f26d5b28d7e1e81a48e7e2fbd97
+size 494
