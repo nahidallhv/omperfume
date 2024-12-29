@@ -1,22 +1,21 @@
-import { initializeApp, getApps, getApp } from "firebase/app"
-import { getAuth } from "firebase/auth"
-import { getFirestore, collection, addDoc } from "firebase/firestore"
-import { getStorage } from "firebase/storage"
+import { initializeApp, getApps, getApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyACsWEUsb3zyhJU_PvC7DHfsXtgwwIqI_Y",
-  authDomain: "liebe-5c5f6.firebaseapp.com",
-  projectId: "liebe-5c5f6",
-  storageBucket: "liebe-5c5f6.firebasestorage.app",
-  messagingSenderId: "348824968236",
-  appId: "1:348824968236:web:96bac7f61a2bb74cb68589",
-  measurementId: "G-LPMDENGFYC"
-}
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
+};
 
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApp()
-const auth = getAuth(app)
-const db = getFirestore(app)
-const storage = getStorage(app)
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+const auth = getAuth(app);
+const db = getFirestore(app);
+const storage = getStorage(app);
 
-export { app, auth, db, storage, addDoc, collection }
-
+export { app, auth, db, storage, addDoc, collection };
