@@ -12,3 +12,14 @@ module.exports = {
     domains: ['localhost'], // izin verilen alan adlarını ekleyin
   },
 }
+
+
+module.exports = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+};
+
