@@ -14,16 +14,15 @@
 
 .raindrop {
   position: absolute;
-  top: -20px;  /* Başlangıç noktası yukarıda */
+  top: -20px;  
   width: 10px;
   height: 20px;
-  background-color: rgba(63, 127, 191, 0.8); /* Yağmur damlası rengi */
-  border-radius: 50% 50% 50% 50% / 0% 0% 100% 100%; /* Damla şekli */
+  background-color: rgba(63, 127, 191, 0.8);
+  border-radius: 50% 50% 50% 50% / 0% 0% 100% 100%; 
   animation: fall 8s infinite ease-in-out;
   opacity: 0.7;
 }
 
-/* Renk ve hareket çeşitliliği */
 .raindrop:nth-child(1) { left: 5%; animation-duration: 6s; background-color: rgba(63, 191, 191, 0.8); }
 .raindrop:nth-child(2) { left: 10%; animation-duration: 7s; background-color: rgba(127, 63, 191, 0.8); }
 .raindrop:nth-child(3) { left: 20%; animation-duration: 5.5s; background-color: rgba(191, 191, 63, 0.8); }
@@ -47,7 +46,6 @@
 .raindrop:nth-child(19) { left: 87%; animation-duration: 6.4s; background-color: rgba(191, 63, 191, 0.6); }
 .raindrop:nth-child(20) { left: 97%; animation-duration: 7.8s; background-color: rgba(191, 191, 63, 0.6); }
 
-/* Yağmur damlalarının düşme animasyonu */
 @keyframes fall {
   0% {
     transform: translateY(0);
@@ -57,7 +55,7 @@
     opacity: 1;
   }
   100% {
-    transform: translateY(100vh); /* Damlaların tam ekran aşağıya düşmesi */
+    transform: translateY(100vh); 
     opacity: 0;
   }
 }
