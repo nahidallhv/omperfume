@@ -1,25 +1,37 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Cross-Origin-Opener-Policy',
+            value: 'same-origin-allow-popups'
+          }
+        ],
+      }
+    ]
+  }
 };
 
 export default nextConfig;
 
 module.exports = {
   images: {
-    
-    domains: ['localhost'], // izin verilen alan adlarını ekleyin
+    domains: ['localhost', 'lajdomsjwkmvgjprkouk.supabase.co', 'omperfume.az'],
   },
-}
-
-
-module.exports = {
   eslint: {
     ignoreDuringBuilds: true,
   },
   typescript: {
     ignoreBuildErrors: true,
   },
+  
 };
+
+
+
+
 

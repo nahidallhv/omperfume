@@ -33,9 +33,8 @@ export async function getFeaturedProducts(): Promise<Product[]> {
   const allProducts = await getCollection('products') as Product[];
   const featuredProducts = allProducts.filter(product => product.featured === true);
   
-  // If no featured products, return the first 3 products (or all if less than 3)
   if (featuredProducts.length === 0) {
-    return allProducts.slice(0, 8);
+    return allProducts.slice(0, 6);
   }
   
   return featuredProducts;
