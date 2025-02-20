@@ -3,6 +3,7 @@ import { db } from '../lib/firebase';
 import { getCollection, getDocument, getDocumentsWhere } from './firestore-service';
 
 export interface Product {
+  type: string;
   id: string;
   name: string;
   description: string;

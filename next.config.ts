@@ -22,12 +22,6 @@ module.exports = {
   images: {
     domains: ['localhost', 'lajdomsjwkmvgjprkouk.supabase.co', 'omperfume.az'],
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   
 };
 
